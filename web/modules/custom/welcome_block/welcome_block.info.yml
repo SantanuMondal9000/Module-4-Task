@@ -1,0 +1,5 @@
+name: 'Welcome Block'                                 # Module name displayed in the admin UI
+type: module                                          # Defines this as a Drupal module
+description: 'Shows welcome message with user role'   # Short description of the module's purpose
+core_version_requirement: ^10                         # Compatible with Drupal 10
+package: Custom                                       # Appears under "Custom" category in module list

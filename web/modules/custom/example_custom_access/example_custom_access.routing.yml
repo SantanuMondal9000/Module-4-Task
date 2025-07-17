@@ -1,0 +1,32 @@
+example_custom_access.custom_page:
+  path: '/custom-access'
+  defaults:
+    _controller: '\Drupal\example_custom_access\Controller\ExampleController::content'
+    _title: 'Example Access Page'
+  requirements:
+    _custom_access: 'example_custom_access.access_check::access'
+
+example_custom_access.page:
+  path: '/example-access'
+  defaults:
+    _controller: '\Drupal\example_custom_access\Controller\ExampleController::content'
+    _title: 'Custom Page'
+  requirements:
+    _role: 'administrator+editor'
+
+example_custom_access.parameter:
+  path: '/parameter/{id}'
+  defaults:
+    _controller: '\Drupal\example_custom_access\Controller\CustomParameter::showID'
+    _title: 'Custom Parameter'
+  requirements:
+    _role: 'administrator+editor'
+    id: \d+   
+
+example_custom_access.static_permission:
+  path: '/static-permission'
+  defaults:
+    _controller: '\Drupal\example_custom_access\Controller\ExampleController::content'
+    _title: 'Custom Page'
+  requirements:
+    _permission: 'access example page'

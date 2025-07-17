@@ -1,0 +1,5 @@
+name: 'Custom Welcome'                # Module name shown in admin UI
+type: module                          # Type: module/theme/profile
+description: 'Prints welcome message' # Short module description
+package: Custom                       # Group under "Custom" in module list
+core_version_requirement: ^10 || ^11 # Compatible with Drupal 10 and 11

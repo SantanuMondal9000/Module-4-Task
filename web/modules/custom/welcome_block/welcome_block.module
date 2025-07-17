@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_user_login().
+ */
+function welcome_block_user_login() {
+  $redirect_url = '/custom-welcome-page';
+  \Drupal::request()->getSession()->set('custom_login_redirect', $redirect_url);
+}
+?>

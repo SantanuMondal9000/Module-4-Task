@@ -1,0 +1,6 @@
+services:
+  welcome_block.login_redirect_subscriber:
+    class: Drupal\welcome_block\EventSubscriber\LoginRedirectSubscriber
+    arguments: ['@current_user', '@path.current']
+    tags:
+      - { name: event_subscriber }

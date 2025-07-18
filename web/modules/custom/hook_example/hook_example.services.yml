@@ -1,0 +1,4 @@
+services:
+    hook_example.login_details_service:
+      class: Drupal\hook_example\Service\CustomLoginService
+      arguments: ['@current_user']

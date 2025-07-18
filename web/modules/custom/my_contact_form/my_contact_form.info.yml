@@ -1,5 +1,5 @@
-name: 'My Contact Form'                                                   # Human-readable module name.
-type: module                                                              # Type of extension: module.
+name: 'My Contact Form'                                                   # The Module name will show to the user.
+type: module                                                              # It will declare the type like it is the module type.
 description: 'A generic contact form that stores data in the database.'   # Short description shown in admin UI.
-core_version_requirement: ^10                                             # Requires Drupal 10.x.
+core_version_requirement: ^10                                             # the version of the Drupal require.
 package: Custom                                                           # Groups this module under "Custom" in the module list.

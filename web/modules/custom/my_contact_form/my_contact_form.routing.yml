@@ -5,4 +5,3 @@ my_contact_form.my_custom_form:
     _title: 'My Custom Form'
   requirements:
     _permission: 'access content'
-

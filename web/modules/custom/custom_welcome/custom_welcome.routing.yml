@@ -1,0 +1,7 @@
+custom_welcome.hello_welcome:
+  path: '/hello-user'
+  defaults:
+    _controller: '\Drupal\custom_welcome\Controller\HelloController::hello'
+    _title: 'Welcome User'
+  requirements:
+    _permission: 'access content'

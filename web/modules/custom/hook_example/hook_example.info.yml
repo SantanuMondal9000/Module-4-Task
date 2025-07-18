@@ -1,0 +1,5 @@
+name: Hook Example                                          # Module name shown in the admin UI
+type: module                                                # Type of extension (module, theme, etc.)
+description: Demonstrates all major types of Drupal hooks.  # Short summary of module functionality
+core_version_requirement: ^10                               # Compatible with Drupal 10 and above
+package: Custom                                             # Display group on the "Extend" admin page

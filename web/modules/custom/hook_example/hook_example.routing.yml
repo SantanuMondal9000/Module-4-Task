@@ -1,0 +1,23 @@
+hook_example.demo:
+  path: '/hook-example/demo'
+  defaults:
+    _controller: '\Drupal\hook_example\Controller\HookExampleController::content'
+    _title: 'Hook Example Demo Page'
+  requirements:
+    _permission: 'access content'
+    
+hook_example.login_count_page:
+  path: '/user-login-count/{user}'
+  defaults:
+    _controller: '\Drupal\hook_example\Controller\LoginCountController::content'
+    _title: 'User Login Count'
+  requirements:
+    _permission: 'access content'
+
+my_module.login_count_page:
+  path: '/user-login-count'
+  defaults:
+    _controller: '\Drupal\hook_example\Controller\LoginCountController::allUserCounts'
+    _title: 'Your Login Count'
+  requirements:
+    _permission: 'access content'

@@ -20,7 +20,6 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
-  example_custom_access: 0
   field: 0
   field_ui: 0
   file: 0
@@ -37,6 +36,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  routing_module: 0
   search: 0
   shortcut: 0
   system: 0

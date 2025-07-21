@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\welcome_block\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -17,5 +18,3 @@ class WelcomePageController extends ControllerBase {
     ];
   }
 }
-
-?>

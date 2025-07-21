@@ -10,13 +10,32 @@ use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 
 /**
- * Redirect users after login based on role.
+ * Redirect users to the custom destination url after login..
  */
 class LoginRedirectSubscriber implements EventSubscriberInterface {
 
+  /**
+   * The current user object. Provides access to the currently logged-in user's information.
+   * 
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
   protected $currentUser;
+
+  /**
+   * The current path service.Used to retrieve the current URL path.
+   *
+   * @var \Drupal\Core\Path\CurrentPathStack
+   */
   protected $currentPath;
 
+  /**
+   * Constructs a new instance of the class.
+   *
+   * @param \Drupal\Core\Session\AccountProxyInterface $current_user
+   *   The current user service.
+   * @param \Drupal\Core\Path\CurrentPathStack $current_path
+   *   The current path stack service.
+   */
   public function __construct(AccountProxyInterface $current_user, CurrentPathStack $current_path) {
     $this->currentUser = $current_user;
     $this->currentPath = $current_path;

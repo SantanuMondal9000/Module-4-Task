@@ -1,4 +1,4 @@
-name: 'Example Custom Access'                                 # The module name to the user.
+name: 'Routing Module'                                        # The module name to the user.
 type: module                                                  # It is the module type.
 description: 'Demonstrates _custom_access in the controller'  # Short description of the module
 core_version_requirement: ^10 || ^9                           # Supports both Drupal 10 and 9

@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * The module will help to implement the custom extra feature.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+
+/**
+ * The color_field_entity_access_field() will give the specific permission to create the color field.
+ *
+ * @param string $operation
+ *   The operation being performed when the edit mode is open.
+ * @param \Drupal\Core\Field\FieldDefinitionInterface $field_definition
+ *   The field definition interface will return the details of the field.
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   The current user account interface will return the current account details.
+ * @param \Drupal\Core\Field\FieldItemListInterface $items
+ *   The field values(optional).
+ *
+ * @return \Drupal\Core\Access\AccessResultInterface
+ *   The access result will return the access accroding to the permission.
+ */
+function color_field_entity_field_access(string $operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items) {
+  if ($field_definition->getType() === 'rgb_hex_color') {
+    if (!in_array('administrator', $account->getRoles()) && $operation == 'edit') {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
+}

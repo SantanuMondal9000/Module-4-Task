@@ -1,0 +1,5 @@
+name: 'Example Custom Access'                                 # Human-readable name shown in the admin UI
+type: module                                                  # Specifies this is a module
+description: 'Demonstrates _custom_access in the controller'  # Short description of the module
+core_version_requirement: ^10 || ^9                           # Supports both Drupal 10 and 9
+package: Custom                                               # Appears under "Custom" category in admin module list

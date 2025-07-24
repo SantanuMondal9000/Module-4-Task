@@ -1,0 +1,16 @@
+services:
+  example_custom_access.controller:
+    class: Drupal\example_custom_access\Controller\ExampleController
+    arguments: []
+    tags:
+      - { name: controller.service_arguments }
+      - { name: access_check }
+
+  example_custom_access.access_check:
+    class: Drupal\example_custom_access\Access\CustomAccessCheck
+    tags:
+      - { name: access_check }
+  example_custom_access.route_subscriber:
+    class: Drupal\example_custom_access\EventSubscriber\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

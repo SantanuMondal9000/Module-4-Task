@@ -1,0 +1,15 @@
+services:
+  routing_module.controller:
+    class: Drupal\routing_module\Controller\WelcomeController
+    tags:
+      - { name: controller.service_arguments }
+      - { name: access_check }
+
+  routing_module.access_check:
+    class: Drupal\routing_module\Access\CustomAccessCheck
+    tags:
+      - { name: access_check }
+  routing_module.route_subscriber:
+    class: Drupal\routing_module\EventSubscriber\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

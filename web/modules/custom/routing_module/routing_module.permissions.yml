@@ -1,0 +1,3 @@
+access example page:
+  title: 'Access the custom example page'
+  description: 'Allows users to access /example-access route.'

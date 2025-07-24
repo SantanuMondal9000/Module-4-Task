@@ -1,0 +1,4 @@
+services:
+  custom_welcome.welcome_message:
+    class: Drupal\custom_welcome\Service\WelcomeMessageService
+    arguments: ['@current_user']

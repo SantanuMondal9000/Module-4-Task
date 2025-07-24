@@ -1,0 +1,181 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_user_login().
+ *
+ * Increments a user's login count and sends a notification email.
+ *
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   The user account object.
+ */
+function hook_example_user_login(AccountInterface $account) {
+  $user = User::load($account->id());
+  $count = $user->get('field_login_count')->value ?? 0;
+
+  \Drupal::logger('my_module')->notice('User ID @uid login count updated to @count', [
+    '@uid' => $account->id(),
+    '@count' => $count + 1,
+  ]);
+
+  $username = $account->getAccountName();
+
+  \Drupal::service('plugin.manager.mail')->mail(
+    'hook_example',
+    'custom_notification',
+    'recipient@example.com',
+    'en',
+    ['username' => $username]
+  );
+
+  \Drupal::logger('my_module')->notice('Login Email sent for @user', ['@user' => $username]);
+
+  $user->set('field_login_count', $count + 1);
+  $user->save();
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Alters the user login form fields.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state object.
+ * @param string $form_id
+ *   The form ID.
+ */
+function hook_example_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'user_login_form') {
+    $form['#title'] = t('Please Log In Below');
+
+    if (isset($form['name'])) {
+      $form['name']['#title'] = t('Your Email Address');
+      $form['name']['#attributes']['placeholder'] = t('Enter your email');
+    }
+
+    if (isset($form['pass'])) {
+      $form['pass']['#description'] = t('Use at least 8 characters.');
+    }
+
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#value'] = t('Sign In Now');
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Registers a custom theme template.
+ *
+ * @param array $existing
+ *   An array of existing implementations.
+ * @param string $type
+ *   The type of theme hook being invoked.
+ * @param string $theme
+ *   The name of the active theme.
+ * @param string $path
+ *   The path to the module.
+ *
+ * @return array
+ *   An associative array of theme hook definitions.
+ */
+function hook_example_theme($existing, $type, $theme, $path) {
+  return [
+    'hook_example_custom' => [
+      'variables' => ['data' => NULL],
+      'template' => 'hook-example-custom',
+      'path' => \Drupal::service('extension.list.module')->getPath('hook_example') . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Alters the node article form.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state object.
+ * @param string $form_id
+ *   The form ID.
+ */
+function my_module_form_node_article_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Publish Article');
+  }
+}
+
+/**
+ * Alters the node news form.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state object.
+ * @param string $form_id
+ *   The form ID.
+ */
+function my_module_form_node_news_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Save this news');
+  }
+}
+
+/**
+ * Implements hook_mail().
+ *
+ * Defines email messages sent by this module.
+ *
+ * @param string $key
+ *   The key to identify the email.
+ * @param array $message
+ *   The email message array (by reference).
+ * @param array $params
+ *   An array of parameters to build the message.
+ */
+function hook_example_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'custom_notification':
+      $message['subject'] = t('Test Email Subject');
+      $message['body'][] = t('Hello @name, this is sample email.', ['@name' => $params['username']]);
+      break;
+  }
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Executes tasks during cron runs.
+ */
+function hook_example_cron() {
+  \Drupal::logger('my_cron_module')->notice('Cron just ran at @time.', [
+    '@time' => \Drupal::service('date.formatter')->format(time()),
+  ]);
+}
+
+/**
+ * Implements hook_page_top().
+ *
+ * Adds content at the top of the rendered page.
+ *
+ * @param array $page_top
+ *   A render array representing the top of the page.
+ */
+function hook_example_page_top(array &$page_top): void {
+  $page_top['hook_example'] = [
+    '#markup' => 'This is the top.',
+  ];
+
+  $page_top['loading_spinner'] = [
+    '#markup' => '<div id="page-loader">Loading...</div>',
+    '#attached' => [
+      'library' => ['my_module/page_loader'],
+    ],
+  ];
+}

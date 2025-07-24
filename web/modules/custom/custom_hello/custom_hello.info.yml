@@ -1,0 +1,5 @@
+name: 'Custom Hello'                                            # The name of the module as it will appear in the admin interface.
+type: module                                                    # Defines this file as a module definition file.
+description: 'Says Hello to the current user with permission.'  # A short description of what the module does.
+core_version_requirement: ^10                                   # Specifies that the module is compatible with Drupal core version 10 or above.
+package: Custom                                                 # Groups the module under the "Custom" package in the module list.

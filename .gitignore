@@ -14,7 +14,6 @@
 /web/private/scripts/quicksilver
 /web/sites/default/settings.php
 /vendor/
-/web/modules/custom/
 
 /.editorconfig
 /.gitattributes

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * welcome block module that will help to implement the custom modification.
+ * 
+ * Contains hooks and implementations for the Welcome Block module.
+ */
+
+/**
+ * This will set the session at the time of login of redirect path.
+ */
+function welcome_block_user_login() {
+  $redirect_url = '/custom-welcome-page';
+  \Drupal::request()->getSession()->set('custom_login_redirect', $redirect_url);
+}

@@ -1,0 +1,18 @@
+award_movies.award_movies.*:
+  type: config_entity
+  label: Award Movies
+  mapping:
+    id:
+      type: string
+      label: ID
+    label:
+      type: label
+      label: Label
+    uuid:
+      type: string
+    award_name:
+      type: string
+      label: Award Name
+    award_year: 
+      type: integer
+      label: Award Year

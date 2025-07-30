@@ -1,0 +1,5 @@
+name: 'Movie Content'
+type: module
+description: 'This is the module that create one Movie content type of node entity'
+package: Custom
+core_version_requirement: ^10 || ^11

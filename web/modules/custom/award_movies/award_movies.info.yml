@@ -1,0 +1,5 @@
+name: 'Award Movies'
+type: module
+description: 'This is the module that will store the configuration of the award winnings movies.'
+package: Custom
+core_version_requirement: ^10 || ^11

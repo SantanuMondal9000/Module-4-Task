@@ -1,0 +1,5 @@
+entity.award_movies.overview:
+  title: Award Movies
+  parent: system.admin_config
+  description: 'List of award moviess to extend site functionality.'
+  route_name: entity.award_movies.collection

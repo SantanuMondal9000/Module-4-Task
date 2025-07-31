@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * This module file will alter the node view and create the message.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * This hook will render the message according to the budget condition.
+ */
+function movie_budget_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if ($node->getType() == 'movie') {
+    $config = \Drupal::config('movie_budget.settings');
+    $budget_amount = $config->get('budget');
+
+    $price = $node->get('field_movie_price')->value;
+
+    if ($price !== NULL) {
+      if ($price < $budget_amount) {
+        $message = t('The movie is under budget.');
+      }
+      elseif ($price > $budget_amount) {
+        $message = t('The movie is over budget');
+      }
+      else {
+        $message = t('The movie is within budget.');
+      }
+
+      $build['movie_budget_message'] = [
+        '#markup' => '<div>' . $message . '</div>',
+        '#weight' => -100,
+      ];
+    }
+  }
+}

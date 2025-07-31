@@ -1,0 +1,7 @@
+movie_budget.settings:
+  type: config_object
+  label: 'Movie budget settings'
+  mapping:
+    example:
+      type: string
+      label: 'Budget'

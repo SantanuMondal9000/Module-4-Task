@@ -1,0 +1,5 @@
+name: 'Movie budget'
+type: module
+description: 'This module is create the movie budget configuration and provide conditional menu links.'
+package: 'custom'
+core_version_requirement: ^10

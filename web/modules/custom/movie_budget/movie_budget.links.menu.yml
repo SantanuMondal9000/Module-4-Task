@@ -1,0 +1,6 @@
+movie_budget.budget:
+  title: Budget
+  description: Set the budget amount for movies
+  parent: system.admin
+  route_name: movie_budget.budget
+  weight: 10

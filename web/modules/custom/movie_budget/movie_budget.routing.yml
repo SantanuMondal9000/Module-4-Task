@@ -1,0 +1,7 @@
+movie_budget.budget:
+  path: '/admin/config/system/budget'
+  defaults:
+    _title: 'Budget'
+    _form: 'Drupal\movie_budget\Form\BudgetForm'
+  requirements:
+    _role: administrator + content editor

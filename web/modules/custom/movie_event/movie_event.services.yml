@@ -1,0 +1,6 @@
+services:
+ custom_movie_price_event:
+    class: '\Drupal\movie_event\EventSubscriber\MovieEventSubscriber'
+    arguments: ['@messenger', '@config.factory']
+    tags:
+      - { name: 'event_subscriber' }

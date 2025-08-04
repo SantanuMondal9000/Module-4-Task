@@ -1,0 +1,7 @@
+name: 'Movie Event'
+type: module
+description: 'This is the movie event module that will generate the message in node view by event subscriber.'
+package: Custom
+dependencies:
+  - node
+core_version_requirement: ^10 || ^11

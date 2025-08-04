@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains custom_events.module.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\movie_event\Event\MoviePriceEvent;
+
+/**
+ * This hook to dispatch the movie event.
+ */
+function movie_event_node_view(array &$build, NodeInterface $node, $view_mode, $langcode) {
+  if ($node->getType() == 'movie') {
+    $event = new MoviePriceEvent($node);
+
+    // Get the event_dispatcher service and dispatch the event.
+    $event_dispatcher = \Drupal::service('event_dispatcher');
+    $event_dispatcher->dispatch($event, MoviePriceEvent::EVENT_NAME);
+  }
+
+}

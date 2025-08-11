@@ -1,0 +1,15 @@
+annual_event.dashboard:
+  path: '/dashboard'
+  defaults:
+    _title: 'Dashboard'
+    _controller: '\Drupal\annual_event\Controller\AnnualEventController::dashboardContent'
+  requirements:
+    _permission: 'access content'
+
+annual_event.find_event:
+  path: '/find-event'
+  defaults:
+    _title: 'Find Event'
+    _form: 'Drupal\annual_event\Form\FindEventForm'
+  requirements:
+    _permission: 'access content'

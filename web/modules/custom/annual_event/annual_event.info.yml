@@ -1,0 +1,5 @@
+name: 'Annual Event'
+type: module
+description: 'This is the annual custom event that will monitor the details of the yearly events.'
+package: Custom
+core_version_requirement: ^10 || ^11
